@@ -10,7 +10,12 @@ Whether you're a seasoned pro or a first-time skier, SkiSwap has the ski for you
 ![SkiSwap](IMG_5231.jpg)
 
 Key Feature:
+
 Tinder like left and right for very simple UI (way better than KSL)
+
 Ability to filter by length, brand, underfoot, year, condition, price
+
 Easy integrated chat within application to contact the seller 
+
 Ability to save skis that you want to contact seller later.
+
