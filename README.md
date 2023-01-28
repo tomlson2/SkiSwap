@@ -6,3 +6,5 @@ SkiSwap allows you to browse and purchase skis from a variety of sellers,
 but with the added convenience of being able to filter by both height and width to ensure a perfect fit. Gone are the days
 of searching through skis that are too short and too tall for you on other marketplaces.
 Whether you're a seasoned pro or a first-time skier, SkiSwap has the ski for you.
+
+![SkiSwap](IMG_5231.jpg)
