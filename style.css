@@ -55,6 +55,7 @@ body {
   #banner h2 {
     font-size: 50px;
     margin-bottom: 20px;
+    color: black;
   }
   
   #banner p {
@@ -99,14 +100,6 @@ body {
   
   .feature p {
     font-size: 16px;
-  }
-  
-  #products {
-    margin: 50px 0;
-  }
-  
-  #products h2 {
-    margin-bottom: 20px;
   }
   
   #products .cards {
@@ -163,4 +156,55 @@ body {
     background-color: #f2f2f2;
     padding: 20px;
     text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  form label,
+  form input,
+  form select,
+  form button {
+    width: 48%;
+    margin-bottom: 20px;
+  }
+  
+  form label {
+    font-weight: bold;
+  }
+  
+  form input,
+  form select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  form select {
+    width: 50%;
+  }
+
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  form button {
+    background-color: #ff6600;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+    width: 100%;
+  }
+  
+  form button:hover {
+    background-color: #cc5500;
   }
