@@ -19,3 +19,5 @@ Easy integrated chat within application to contact the seller
 
 Ability to save skis that you want to contact seller later.
 
+## Deliverable Learning
+Making the deliverable, we learned a lot about all of the different styling that can be applied. Sometimes it was a little difficult to know how it would change the website but through lots of trial and error we got a pretty good result. We used our learning from the simon assignment to add a new page and link them together.
