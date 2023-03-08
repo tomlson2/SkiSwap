@@ -1,210 +1,214 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  header {
-    background-color: #003366;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
-  
-  nav li {
-    margin: 0 10px;
-  }
-  
-  nav a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  nav a:hover {
-    text-decoration: underline;
-  }
-  
-  main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  #banner {
-    background-size: cover;
-    background-position: center;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #fff;
-    padding: 20px;
-  }
-  
-  #banner h2 {
-    font-size: 50px;
-    margin-bottom: 20px;
-    color: black;
-  }
-  
-  #banner p {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .btn {
-    background-color: #ff6600;
-    color: #fff;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: bold;
-  }
-  
-  .btn:hover {
-    background-color: #cc5500;
-  }
-  
-  #features {
-    display: flex;
-    justify-content: space-between;
-    margin: 50px 0;
-  }
-  
-  .feature {
-    width: 30%;
-    text-align: center;
-  }
-  
-  .feature i {
-    font-size: 48px;
-    margin-bottom: 20px;
-  }
-  
-  .feature h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .feature p {
-    font-size: 16px;
-  }
-  
-  #products .cards {
-    display: flex;
-    overflow-x: scroll;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    margin: 0 -10px;
-    padding: 20px 0;
-  }
-  
-  .card {
-    width: 400px;
-    margin-right: 20px;
-    display: inline-block;
-    background-color: #fff;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 0 10px;
-  }
-  
-  
-  .card img {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-  }
-  
-  .card-bottom {
-    padding: 20px;
-  }
-  
-  .card-bottom h4 {
-    margin: 0;
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .card-bottom p {
-    margin: 0;
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
-  
-  .card-bottom .price {
-    font-size: 18px;
-    font-weight: bold;
-    color: #ff6600;
-  }
-  
-  footer {
-    background-color: #f2f2f2;
-    padding: 20px;
-    text-align: center;
-  }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-  form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  form label,
-  form input,
-  form select,
-  form button {
-    width: 48%;
-    margin-bottom: 20px;
-  }
-  
-  form label {
-    font-weight: bold;
-  }
-  
-  form input,
-  form select {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  form select {
-    width: 50%;
-  }
+header {
+  background-color: #003366;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
 
-  a {
-    text-decoration: none;
-    color: #fff;
-  }
-  
-  form button {
-    background-color: #ff6600;
-    color: #fff;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.2s ease;
-    width: 100%;
-  }
-  
-  form button:hover {
-    background-color: #cc5500;
-  }
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav li {
+  margin: 0 10px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#banner {
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+}
+
+#banner h2 {
+  font-size: 50px;
+  margin-bottom: 20px;
+  color: black;
+}
+
+#banner p {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: #ff6600;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: #cc5500;
+}
+
+#features {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 0;
+}
+
+.feature {
+  width: 30%;
+  text-align: center;
+}
+
+.feature i {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.feature h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.feature p {
+  font-size: 16px;
+}
+
+#products .cards {
+  display: flex;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 -10px;
+  padding: 20px 0;
+}
+
+.card {
+  width: 400px;
+  margin-right: 20px;
+  display: inline-block;
+  background-color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 10px;
+}
+
+
+.card img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.card-bottom {
+  padding: 20px;
+}
+
+.card-bottom h4 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.card-bottom p {
+  margin: 0;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.card-bottom .price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff6600;
+}
+
+footer {
+  background-color: #f2f2f2;
+  padding: 20px;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+form label,
+form input,
+form select,
+form button {
+  width: 48%;
+  margin-bottom: 20px;
+}
+
+form label {
+  font-weight: bold;
+}
+
+form input,
+form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+form select {
+  width: 50%;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+form button {
+  background-color: #ff6600;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+form button:hover {
+  background-color: #cc5500;
+}
+
+#footerText {
+  color: black;
+}

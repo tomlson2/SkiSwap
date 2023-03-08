@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>SnoSwap</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body>
-    <header>
-      <h1><a href="/index.html">SnoSwap</a></h1>
-    </header>
-    <main>
-      <h2>List Your Skis</h2>
-      <form>
-        <label for="price">Price:</label>
-        <input type="text" id="price" name="price" required>
-        <label for="brand">Brand:</label>
-        <input type="text" id="brand" name="brand" required>
-        <label for="wear">Wear:</label>
-        <select id="wear" name="wear" required>
-          <option value="">-- Select an option --</option>
-          <option value="new">New</option>
-          <option value="lightly_used">Lightly Used</option>
-          <option value="moderately_used">Moderately Used</option>
-          <option value="heavily_used">Heavily Used</option>
-        </select>
-        <label for="width">Width:</label>
-        <input type="text" id="width" name="width" required>
-        <label for="length">Length:</label>
-        <input type="text" id="length" name="length" required>
-        <label for="image">Image:</label>
-        <input type="file" id="image" name="image" accept="image/*" required>
-        <button type="submit">Submit</button>
-      </form>
-    </main>
-    <footer>
-      <p>&copy; 2023 SnoSwap. All rights reserved.</p>
-    </footer>
-  </body>
+
+<head>
+  <title>SnoSwap</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="index.html">SnoSwap</a></h1>
+  </header>
+  <main>
+    <h2>List Your Skis</h2>
+    <form>
+      <label for="price">Price:</label>
+      <input type="text" id="price" name="price" required>
+      <label for="brand">Brand:</label>
+      <input type="text" id="brand" name="brand" required>
+      <label for="wear">Wear:</label>
+      <select id="wear" name="wear" required>
+        <option value="">-- Select an option --</option>
+        <option value="new">New</option>
+        <option value="lightly_used">Lightly Used</option>
+        <option value="moderately_used">Moderately Used</option>
+        <option value="heavily_used">Heavily Used</option>
+      </select>
+      <label for="width">Width:</label>
+      <input type="text" id="width" name="width" required>
+      <label for="length">Length:</label>
+      <input type="text" id="length" name="length" required>
+      <label for="image">Image:</label>
+      <input type="file" id="image" name="image" accept="image/*" required>
+      <button type="submit">Submit</button>
+    </form>
+  </main>
+  <footer>
+    <p id="footerText">&copy; 2023 Ski Selling Marketplace. All rights reserved.</p>
+    <a id="footerText" class="text-reset" href="https://github.com/pholyoak/simon.git">Github</a>
+  </footer>
+</body>
+
 </html>
