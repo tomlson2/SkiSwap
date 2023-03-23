@@ -1,29 +1,21 @@
 #!/bin/bash
 
-while getopts k:h:s: flag
+while getopts k:h: flag
 do
     case "${flag}" in
         k) key=${OPTARG};;
         h) hostname=${OPTARG};;
-        s) service=${OPTARG};;
     esac
 done
 
-if [[ -z "$key" || -z "$hostname" || -z "$service" ]]; then
+if [[ -z "$key" || -z "$hostname" ]]; then
     printf "\nMissing required parameter.\n"
-    printf "  syntax: deployFiles.sh -k <pem key file> -h <hostname> -s <service>\n\n"
+    printf "  syntax: deployWebsite.sh -k <pem key file> -h <hostname>\n\n"
     exit 1
 fi
 
-printf "\n----> Deploying files for $service to $hostname with $key\n"
+printf "\n----> Deploying root website to $hostname with $key\n-------------------------------\n"
 
-# Step 1
-printf "\n----> Clear out the previous distribution on the target.\n"
-ssh -i "$key" ubuntu@$hostname << ENDSSH
-rm -rf services/${service}/public
-mkdir -p services/${service}/public
-ENDSSH
-
-# Step 2
-printf "\n----> Copy the distribution package to the target.\n"
-scp -r -i "$key" * ubuntu@$hostname:services/$service/public
+# Step 1 - Copy all files found in the current directory.
+printf "\n----> Copy the home page files to the target.\n"
+scp -r -i "$key" * ubuntu@$hostname:public_html/
