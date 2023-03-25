@@ -274,3 +274,6 @@ try {
 } finally {
   console.log(`Toss completed`);
 }
+
+## Simon-service
+I learned about how to use apis to post inspirational quotes. I also learned how Node.js is used to creat out HTTp Service. I learned Curl commands better for when we used it for getscores and submitscores. I learned better how to use the web dev tools to set breakpoints to really see what the code is doing.
