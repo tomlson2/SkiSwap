@@ -284,6 +284,9 @@ I learned how to use mongodb to store data like high scores into the simon websi
 ## Simon-login
 I learned way more about cookies. I was unaware before that cookies could be used to track users. So When a user is logged in, the cookie is added. When a user makes a secure request, the cookie is checked. When the user logs out, the cookie is removed. I also learned about endpoints and how they work with the database to store and get credentials and update the authorization cookie. I also learned how the secureApiRouter works by adding middleware function that checks if the authorization cookie is valid before passing the requres to the endpoints
 
+## Simon-Websocket
+I learned that the core feature of WebSocket is that it is fully duplexed. Meaning that after the initial connection is made from a client, using vanilla HTTP, and then upgraded by the server to a WebSocket connection, the relationship changes to a peer to peer connection where either party can efficiently send data at any time. I also found it interesting that WebSocket connections are still only between two parties. So if you want to facilitate a conversation between a group of users the server must act as the intermediary. Each peer first connects to the server, and then the server forwards messages amongst the peers.
+
 ## Simon-react
 I learned the steps to convert simon to a react application
 1 Reorganize Simon
