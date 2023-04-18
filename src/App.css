@@ -1,38 +1,329 @@
-.App {
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  body {
+    margin-left: 17%;
+    margin-right: 17%;
+    font-size: 20px;
+    background-color: #27282b;
+    color: #ffff;
+    font-family: 'Roboto', sans-serif;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  h1.guild {
+    font-size: 35px;
+    text-transform: uppercase;
   }
-  to {
-    transform: rotate(360deg);
+
+  .link {
+    text-decoration: none;
   }
-}
+
+  .stats-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+    color: #fff;
+    margin-top: 50px;
+    margin-bottom: 75px;
+    background-color: #1b1c1f;
+  }
+
+  .stat-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+    text-align: center;
+  }
+
+  h4 {
+    font-size: 24px;
+    margin: 0 0 10px 0;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #f5b031;
+  }
+
+  .row {
+    text-transform: lowercase;
+    font-size: 20px;
+    margin: 0;
+    font-family: 'Verdana';
+  }
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    color: #fff;
+    border-bottom: 1px solid #8d8c8c;
+    margin-top: 40px;
+  }
+r
+  .total-message-count {
+    width: 100%;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: #f5f5f5;
+    padding: 10px 0;
+  }
+
+  .left-group {
+    display: flex;
+  }
+
+  .right-group {
+    display: flex;
+  }
+
+  h2 {
+    font-size: 20px;
+    margin: 2px;
+    margin-bottom: 15px;
+    margin-right: 25px;
+    display: inline-block;
+  }
+
+  .flash-green {
+    animation: flashGreen 1s;
+  }
+
+  .flash-red {
+    animation: flashRed 1s;
+  }
+
+  @keyframes flashGreen {
+    0% {
+      background-color: transparent;
+    }
+
+    50% {
+      color: #8bc34a;
+    }
+
+    100% {
+      background-color: transparent;
+    }
+  }
+
+  @keyframes flashRed {
+    0% {
+      background-color: transparent;
+    }
+
+    50% {
+      color: #f44336;
+    }
+
+    100% {
+      background-color: transparent;
+    }
+  }
+
+  .chart {
+    margin-left: -40px;
+    margin-right: -40px;
+  }
+
+  h3 {
+    margin: 2px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    font-size: 20px;
+    display: inline-block;
+  }
+
+  .header-container h2,
+  h3 {
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .active-filter {
+    color: #f5b031;
+  }
+
+  .tabcontent {
+    display: none;
+    padding: 20px;
+    background-color: #f2f2f2;
+    color: #333;
+  }
+
+  .icon-text-container {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .small-icon-text-container {
+    margin-bottom: 40px;
+    font-size: 25px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .icon {
+    margin-right: 18px;
+    /* Adjust the spacing between the icon and the text as needed */
+  }
+
+  .title {
+    vertical-align: middle;
+  }
+
+  .header-container h2.active,
+  .header-container h3.active {
+    color: #f5b031;
+  }
+
+  .highlight-number {
+    color: #f5b031;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+
+  .flex-container {
+    display: flex;
+  }
+
+  .list-container ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .list-container li {
+    font-size: 30px;
+    margin-top: 10px;
+  }
+
+
+  .list-container {
+    flex-basis: 50%;
+    padding: 10px;
+  }
+
+
+  .details-title {
+    vertical-align: middle;
+    font-size: 20px;
+  }
+
+  .link {
+    color: #fff;
+  }
+
+  header {
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    font-size: 28px;
+    color: #fff;
+    display: inline-flex;
+  }
+
+  svg {
+    vertical-align: middle;
+    margin-right: 20px;
+  }
+
+  .server-link {
+    display: inline-flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .server-link:hover {
+    text-decoration: underline;
+  }
+
+  .guild-title {
+    margin-top: -50px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .details-logo {
+    width: 50px;
+    /* Adjust the width as needed */
+    height: 50px;
+    /* Adjust the height as needed */
+    margin-right: 18px;
+    /* Adjust the spacing between the icon and the text as needed */
+    vertical-align: middle;
+    border-radius: 9%;
+  }
+
+  .arrow-up::before {
+    content: '\2191';
+    color: greenyellow;
+    margin-right: 5px;
+    margin-bottom: 0px;
+  }
+
+  .arrow-down::before {
+    content: '\2193';
+    color: rgb(230, 88, 88);
+    margin-right: 5px;
+    margin-bottom: 0px;
+  }
+
+  .server-text {
+    vertical-align: middle;
+  }
+
+  table {
+    margin: 20px 0;
+    font-size: 0.9em;
+    font-family: monospace;
+    color: #fff;
+    width: 100%
+  }
+
+  table thead th:first-child {
+    text-align: left;
+  }
+
+  tr:nth-child(even) {
+    background-color: #242424;
+  }
+
+  table th,
+  table td:not(:first-child) {
+    text-align: right;
+    padding: 14px 8px;
+  }
+
+  .server-icon {
+    width: 35px;
+    /* Adjust the width as needed */
+    height: 35px;
+    /* Adjust the height as needed */
+    margin-right: 18px;
+    /* Adjust the spacing between the icon and the text as needed */
+    vertical-align: middle;
+    border-radius: 50%;
+  }
+
+
+  table th {
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+
+  table tbody tr {
+    padding: 0 18px;
+    border-bottom: 1px solid #dddddd;
+  }
+
+  table tbody tr:last-of-type {
+    border-bottom: 2px solid #dddddd;
+  }

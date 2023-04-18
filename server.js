@@ -1,22 +1,28 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const app = express();
 const bodyParser = require('body-parser');
-const DB = require('./database.js')
+const DB = require('./database');
 
-app.use(bodyParser.json());
+app.use(express.json());
 
-app.post('/api/users', (req, res) => {
-  const { name, email, password } = req.body;
-  const user = new User({ name, email, password });
-  user.save((err) => {
-    if (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Error creating user' });
-    } else {
-      res.json({ success: true });
-    }
+app.use(cookieParser());
+
+app.use(express.static('public'));
+
+app.post('/api/users', async (req, res) => {
+    if (await DB.getUser(req.body.email)) {
+        res.status(409).send({ msg: 'Existing user' });
+      } else {
+        const user = await DB.createUser(req.body.email, req.body.password);
+    
+        setAuthCookie(res, user.token);
+    
+        res.send({
+          id: user._id,
+        });
+      }
   });
-});
 
 app.post('/api/login', (req, res) => {
     const { email, password } = req.body;

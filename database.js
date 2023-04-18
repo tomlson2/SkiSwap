@@ -1,20 +1,20 @@
 const { MongoClient } = require('mongodb');
 const bcrypt = require('bcrypt');
-const uuid = require('uuid');
-
 const userName = "tb";
 const password = "ab";
-const hostname = "moingodb.com";
+const hostname = "mongodb.com";
+const name = "usr";
+const SALT_ROUNDS = 10;
 
 if (!userName) {
   throw Error('Database not configured. Set environment variables');
 }
 
-const url = `mongodb+srv://${userName}:${password}@${hostname}`;
-
+const url = `mongodb+srv://tb:ab@cluster0.somzqce.mongodb.net`;
 const client = new MongoClient(url);
-const userCollection = client.db('simon').collection('user');
-const scoreCollection = client.db('simon').collection('score');
+
+const userCollection = client.db().collection('user');
+const scoreCollection = client.db().collection('message');
 
 function getUser(email) {
   return userCollection.findOne({ email: email });
@@ -25,7 +25,6 @@ function getUserByToken(token) {
 }
 
 async function createUser(email, password) {
-  // Hash the password before we insert it into the database
   const passwordHash = await bcrypt.hash(password, 10);
 
   const user = {
@@ -42,20 +41,8 @@ function addScore(score) {
   scoreCollection.insertOne(score);
 }
 
-function getHighScores() {
-  const query = {};
-  const options = {
-    sort: { score: -1 },
-    limit: 10,
-  };
-  const cursor = scoreCollection.find(query, options);
-  return cursor.toArray();
-}
-
 module.exports = {
   getUser,
   getUserByToken,
   createUser,
-  addScore,
-  getHighScores,
 };

@@ -1,41 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-
-import { useState } from 'react';
+import './Login.css';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    axios.post('/api/login', { email, password })
-      .then(response => {
-        console.log(response);
-        // TODO: Handle successful login
-      })
-      .catch(error => {
-        console.log(error);
-        // TODO: Handle error
-      });
-  }
-
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        const response = await axios.post('/api/login', { email, password });
+        console.log(response.data);
+      } catch (error) {
+        console.error('Login failed:', error.response.data.error);
+      }
+    };
   return (
-    <div>
-      <h1>Log in to Tasky</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Email address</label>
-          <input type="email" name="email" value={email} onChange={event => setEmail(event.target.value)} className="form-control" />
-        </div>
-        <div className="form-group">
-          <label>Password</label>
-          <input type="password" name="password" value={password} onChange={event => setPassword(event.target.value)} className="form-control" />
-        </div>
-        <button type="submit" className="btn btn-primary">Log in</button>
+    <div className="log">
+      <form onSubmit={handleSubmit} className="login-form">
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="login-input"
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="login-input"
+        />
+        <button type="submit" className="login-submit">Login</button>
       </form>
     </div>
   );
-}
+};
 
 export default Login;

@@ -1,14 +1,25 @@
-import React from 'react';
+import { React, useState } from 'react';
+import SmallHeader from './SmallHeader';
+import HeaderContainer from './HeaderContainer';
+import ServerTable from './ServerTable';
+import TotalMessageCount from './TotalMessageCount';
 
-class Home extends React.Component {
-  render() {
+const Home = () => {
+    const [headerFilter, setHeaderFilter] = useState("top");
+    const [timeFilter, setTimeFilter] = useState(24);
     return (
-      <div>
-        <h1>Welcome to Tasky</h1>
-        <p>Tasky is a simple task management app where you can add, view, and delete your tasks. Please log in or sign up to get started.</p>
-      </div>
+        <div>
+            <SmallHeader />
+            <TotalMessageCount />
+            <HeaderContainer
+                onHeaderFilterClick={setHeaderFilter}
+                activeHeaderFilter={headerFilter}
+                onTimeFilterClick={setTimeFilter}
+                activeTimeFilter={timeFilter}
+            />
+            <ServerTable headerFilter={headerFilter} timeFilter={timeFilter} />
+        </div>
     );
-  }
-}
+};
 
 export default Home;
