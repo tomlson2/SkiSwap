@@ -2,18 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ServerRow = ({ item, flashClass }) => {
-  const iconUrl = `https://cdn.discordapp.com/icons/${item.guild_id}/${item.icon}.png`;
-  const serverName = item.guild_name;
-  const serverId = item.guild_id;
-  const messageCount = item.message_count;
-  const activeUsers = item.unique_authors;
-  const reactionCount = item.total_reactions;
-  const createdAt = item.created_at;
+  const iconUrl = `https://singlecolorimage.com/get/${item.icon}/400x100.png`;
+  const serverName = item.question;
+  const messageCount = 0;
+  const activeUsers = 0;
+  const reactionCount = 0;
+  const createdAt = item.timestamp;
 
   return (
     <tr className='row'>
       <td>
-        <Link to={`/server/${serverId}`} className="server-link">
+        <Link to={`/question/${item.id}`} className="server-link">
           <img src={iconUrl} alt="Server Icon" className="server-icon" />
           <span className="server-text">{serverName}</span>
       </Link>

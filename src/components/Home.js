@@ -10,7 +10,6 @@ const Home = () => {
     return (
         <div>
             <SmallHeader />
-            <TotalMessageCount />
             <HeaderContainer
                 onHeaderFilterClick={setHeaderFilter}
                 activeHeaderFilter={headerFilter}
