@@ -11,6 +11,10 @@ const popupLength = document.getElementById('popup-length');
 const popupBindings = document.getElementById('popup-bindings');
 const closeButton = document.getElementById('close-button');
 
+function popupFunction() {
+    document.getElementById("popup").style.display = "block";
+}
+
 itemCards.forEach((itemCard) => {
     itemCard.addEventListener('click', () => {
         const itemId = itemCard.getAttribute('data-item-id');
