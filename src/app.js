@@ -10,3 +10,30 @@ const popupWidth = document.getElementById('popup-width');
 const popupLength = document.getElementById('popup-length');
 const popupBindings = document.getElementById('popup-bindings');
 const closeButton = document.getElementById('close-button');
+
+itemCards.forEach((itemCard) => {
+    itemCard.addEventListener('click', () => {
+        const itemId = itemCard.getAttribute('data-item-id');
+        const itemTitle = itemCard.querySelector('h2').textContent;
+        const itemImage = itemCard.querySelector('img').getAttribute('src');
+        const itemPrice = itemCard.querySelector('p').textContent;
+        const itemBrand = itemCard.getAttribute('data-brand');
+        const itemName = itemCard.getAttribute('data-name');
+        const itemWear = itemCard.getAttribute('data-wear');
+        const itemWidth = itemCard.getAttribute('data-width');
+        const itemLength = itemCard.getAttribute('data-length');
+        const itemBindings = itemCard.getAttribute('data-bindings');
+
+        popupTitle.textContent = itemTitle;
+        popupImage.setAttribute('src', itemImage);
+        popupPrice.textContent = itemPrice;
+        popupBrand.textContent = `Brand: ${itemBrand}`;
+        popupName.textContent = `Name: ${itemName}`;
+        popupWear.textContent = `Wear: ${itemWear}`;
+        popupWidth.textContent = `Width: ${itemWidth}`;
+        popupLength.textContent = `Length: ${itemLength}`;
+        popupBindings.textContent = `Bindings: ${itemBindings}`;
+
+        popup.style.display = 'flex';
+    });
+});
