@@ -18,7 +18,6 @@ const ServerRow = ({ item }) => {
       console.error('Error updating reaction count:', error);
     }
   };
-
   return (
     <tr className='row'>
       <td>
