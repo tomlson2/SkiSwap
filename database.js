@@ -1,21 +1,28 @@
 const { MongoClient } = require('mongodb');
 const bcrypt = require('bcrypt');
-const userName = "tb";
-const password = "ab";
-const hostname = "mongodb.com";
-const name = "usr";
-const SALT_ROUNDS = 10;
+const uuid = require('uuid');
 
 if (!userName) {
   throw Error('Database not configured. Set environment variables');
 }
 
-const url = `mongodb+srv://tb:ab@cluster0.somzqce.mongodb.net`;
-const client = new MongoClient(url);
+const url = 'mongodb+srv://thomas:bryson@cluster.se1vtjc.mongodb.net/bnb';
 
-const userCollection = client.db().collection('user');
-const scoreCollection = client.db().collection('message');
+async function main() {
+  const client = new MongoClient(url);
+  console.log('logging in')
+  try {
+    await client.connect();
 
+    const result = await client.db('bnb').collection('user').insertOne({ email: "hello@ok.com" })
+    console.log('inserted')
+  } finally {
+    z;
+    await client.close();
+  }
+}
+
+main().catch(console.error);
 function getUser(email) {
   return userCollection.findOne({ email: email });
 }
@@ -32,6 +39,7 @@ async function createUser(email, password) {
     password: passwordHash,
     token: uuid.v4(),
   };
+
   await userCollection.insertOne(user);
 
   return user;
