@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
+import Dropdown from './Dropdown';
 
 const ServerRow = ({ item }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -35,7 +35,7 @@ const ServerRow = ({ item }) => {
           <span className="server-text">{serverName}</span>
           {isDropdownOpen && (
             <div className="dropdown">
-              {/* Dropdown content goes here */}
+            <Dropdown />
             </div>
           )}
       </td>
