@@ -46,11 +46,9 @@ closeButton.addEventListener('click', () => {
     popup.style.display = 'none';
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    const nameDisplay = document.getElementById('name-display');
-    const storedName = localStorage.getItem('storedName');
-
-    if (storedName) {
-        nameDisplay.textContent = storedName;
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get('name');
+    const nameDisplay = document.querySelector('#name-display');
+    nameDisplay.textContent = name;
 });
