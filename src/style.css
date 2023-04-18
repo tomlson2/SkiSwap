@@ -193,3 +193,49 @@ h1 {
 #popup-price {
   margin-bottom: 0;
 }
+
+form label,
+form input,
+form select,
+form button,
+form textarea {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+form label {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+form input,
+form select,
+form textarea {
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  padding: 8px;
+  font-size: 1.1em;
+}
+
+form button {
+  background-color: #ff704d;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #45a049;
+}
+
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+}
