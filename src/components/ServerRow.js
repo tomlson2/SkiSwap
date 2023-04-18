@@ -1,14 +1,24 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import moment from 'moment';
 
 const ServerRow = ({ item }) => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
   const iconUrl = `https://singlecolorimage.com/get/${item.icon}/400x100.png`;
-  const serverName = item.question;
+  const serverName = (
+    <span className="server-text" onClick={toggleDropdown}>
+      {item.question}
+    </span>
+  );
   const messageCount = item.messageCount;
   const responders = item.responders;
   const [reactionCount, setReactionCount] = useState(item.reactionCount);
-  const createdAt = item.timestamp;
+  const createdAt = moment(item.timestamp).fromNow();
 
   const handleLike = async () => {
     try {
@@ -21,10 +31,13 @@ const ServerRow = ({ item }) => {
   return (
     <tr className='row'>
       <td>
-        <Link to={`/question/${item._id}`} className="server-link">
           <img src={iconUrl} alt="Server Icon" className="server-icon" />
           <span className="server-text">{serverName}</span>
-        </Link>
+          {isDropdownOpen && (
+            <div className="dropdown">
+              {/* Dropdown content goes here */}
+            </div>
+          )}
       </td>
       <td>{messageCount}</td>
       <td>{responders}</td>
