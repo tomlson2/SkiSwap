@@ -303,3 +303,15 @@ I learned the steps to convert simon to a react application
 12 Refactor play.jsx into simonGame.jsx, simonButton.jsx, and players.jsx
 13 Refactor components to take advantage of React specific functionality and to create sub-components
 14 Move webSocket code from play.jsx to gameNotifier.js
+
+## SnoChat Javascript
+We added the javascript for Snochat. We orignally set out to do a ski marketplace. After trying some things out and discussing we ended up changing course of direction and changing it to a ski chat place for those who ski. This orginally included making a mock database that would eventually be turned changed into using mongodb. We also created the intial javascript for the login page. 
+
+## SnoChat Service
+With the services, we used learned about mongodb
+we learned how to set up and access the database from the could, build schemas and functions that access it with persistence. 
+We used API's and routed incoming front end traffic through proxy to query data.
+With the websocket, we figured out how to have the front end and back end interact seamlessly for all suers at once meaning that the questions that someone posts updates for everyone
+
+## SnoChat React
+With react, we explored and discovered a lot of new functionality and was able to segment and structure the project a lot more. Also just learned more about what we did in the simon project on how to deploy react and be able to convert our react components. We learned much more using react router and hooks in order to better add functionality with our chat place such as allowing us to navigate between our pages seamlessly and using the hooks to make it easier to manage the state of our appplication. All around it made our code just a tad cleaner.
