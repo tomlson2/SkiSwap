@@ -45,3 +45,12 @@ itemCards.forEach((itemCard) => {
 closeButton.addEventListener('click', () => {
     popup.style.display = 'none';
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const nameDisplay = document.getElementById('name-display');
+    const storedName = localStorage.getItem('storedName');
+
+    if (storedName) {
+        nameDisplay.textContent = storedName;
+    }
+});
