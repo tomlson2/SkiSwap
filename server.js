@@ -11,12 +11,18 @@ app.use(cookieParser());
 app.post('/api/users', async (req, res) => {
 
     const user = await DB.createUser(req.body.email, req.body.password);
-    
-        setAuthCookie(res, user.token);
-    
-        res.send({
-          id: user._id,
-        });
+    if (await DB.getUser(req.body.email)) {
+      res.status(409).send({ msg: 'Existing user' });
+    } else {
+      const user = await DB.createUser(req.body.email, req.body.password);
+  
+      // Set the cookie
+      setAuthCookie(res, user.token);
+  
+      res.send({
+        id: user._id,
+      });
+    }
   });
 
 

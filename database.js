@@ -2,10 +2,6 @@ const { MongoClient } = require('mongodb');
 const bcrypt = require('bcrypt');
 const uuid = require('uuid');
 
-if (!userName) {
-  throw Error('Database not configured. Set environment variables');
-}
-
 const url = 'mongodb+srv://thomas:bryson@cluster.se1vtjc.mongodb.net/bnb';
 
 async function main() {
@@ -43,10 +39,6 @@ async function createUser(email, password) {
   await userCollection.insertOne(user);
 
   return user;
-}
-
-function addScore(score) {
-  scoreCollection.insertOne(score);
 }
 
 module.exports = {
