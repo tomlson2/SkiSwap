@@ -116,22 +116,7 @@ p {
 
 h1 {
   color: #696969;
-  font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif
-}
-
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-}
-
-header {
-  background-color: #4267B2;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-
-h1 {
+  font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
   margin: 0;
 }
 
