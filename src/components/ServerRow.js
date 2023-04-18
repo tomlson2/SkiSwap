@@ -39,8 +39,6 @@ const ServerRow = ({ item }) => {
             </div>
           )}
       </td>
-      <td>{messageCount}</td>
-      <td>{responders}</td>
       <td>
         {reactionCount}
         <button onClick={handleLike} className="like-button">Like</button>

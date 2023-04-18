@@ -5,6 +5,7 @@ import { ReactComponent as Logo } from '../assets/logo.svg'
 
 const SmallHeader = ({token}) => {
   return (
+    <div>
     <header >
       <Logo className="logo" />
       <h1>
@@ -12,6 +13,7 @@ const SmallHeader = ({token}) => {
           Snow Chat
         </a>
       </h1>
+    </header>
       {!token && <div className="auth-buttons-container">
         <Link to="/login" className="auth-button login">
           Login
@@ -23,7 +25,7 @@ const SmallHeader = ({token}) => {
       {token && <div className='auth-buttons-container'>
         Logged in 
         </div>}
-    </header>
+</div>
   );
 };
 

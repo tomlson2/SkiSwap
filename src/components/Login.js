@@ -12,7 +12,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(null); // Reset the error message
+    setError(null);
 
     try {
       const response = await axios.post('/api/login', { email, password });

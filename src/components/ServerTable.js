@@ -115,9 +115,7 @@ const ServerTable = ({ token, headerFilter }) => {
         <thead>
           <tr>
             <th>question</th>
-            <th>responses</th>
-            <th>responders</th>
-            <th>reactions</th>
+            <th>likes</th>
             <th>created</th>
           </tr>
         </thead>
