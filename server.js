@@ -1,12 +1,9 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const User = require('./models/user');
+const DB = require('./database.js')
 
 app.use(bodyParser.json());
-
-mongoose.connect('mongodb://localhost/tasky', { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.post('/api/users', (req, res) => {
   const { name, email, password } = req.body;
