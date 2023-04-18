@@ -2,6 +2,7 @@ import React from 'react';
 import './SmallHeader.css';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../assets/logo.svg'
+import LogoutButton from './Logout';
 
 const SmallHeader = ({token}) => {
   return (
@@ -23,7 +24,7 @@ const SmallHeader = ({token}) => {
         </Link>
       </div>}
       {token && <div className='auth-buttons-container'>
-        Logged in 
+        <LogoutButton />
         </div>}
 </div>
   );

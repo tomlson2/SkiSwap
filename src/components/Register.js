@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Register.css';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import SmallHeader from './SmallHeader';
 
@@ -7,11 +8,12 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
   
+    const history = useNavigate();
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
         const response = await axios.post('/api/users', { email, password });
-        console.log(response.data);
+        history('/');
       } catch (error) {
         console.error('Registration failed:', error.response.data.error);
       }

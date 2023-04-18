@@ -76,6 +76,14 @@ r
     padding: 10px 0;
   }
 
+  footer {
+  padding: 20px;
+  text-align: center;
+  color:white;
+  text-decoration: none;
+  width: 100%;
+}
+
   .left-group {
     display: flex;
   }

@@ -16,6 +16,9 @@ const Home = () => {
                 activeHeaderFilter={headerFilter}
             />
             <ServerTable token={token} />
+            <footer>
+            <a id="footerText" class="text-reset" href="https://github.com/tomlson2/SkiSwap">Github</a>
+        </footer>
         </div>
     );
 };

@@ -18,7 +18,7 @@ const Login = () => {
       const response = await axios.post('/api/login', { email, password });
       console.log(response.data);
 
-      history.push('/');
+      history('/');
     } catch (error) {
       console.error('Login failed:', error.response.data.error);
       setError('Failed to login. Please check your email and password.');
@@ -26,28 +26,30 @@ const Login = () => {
   };
 
   return (
-    <div className="log">
-      <SmallHeader/>
-      <form onSubmit={handleSubmit} className="login-form">
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="login-input"
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="login-input"
-        />
-        {error && <p className="error-message">{error}</p>}
-        <button type="submit" className="login-submit">
-          Login
-        </button>
-      </form>
+    <div>
+      <SmallHeader />
+      <div className="log">
+        <form onSubmit={handleSubmit} className="login-form">
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="login-input"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="login-input"
+          />
+          {error && <p className="error-message">{error}</p>}
+          <button type="submit" className="login-submit">
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

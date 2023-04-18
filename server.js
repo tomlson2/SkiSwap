@@ -103,10 +103,9 @@ app.post('/api/post', async (req, res) => {
 });
 
 app.post('/api/login', async (req, res) => {
-  const { email, password } = req.body;
 
   try {
-    const loggedInUser = await login(email, password, userCollection);
+    const loggedInUser = await DB.login(req.body.email, req.body.password);
 
     setAuthCookie(res, loggedInUser.token);
     res.json({ success: true });
