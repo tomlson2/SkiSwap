@@ -6,112 +6,119 @@
   <title>SnoSwap</title>
   <link rel="shortcut icon" type="image/x-icon" href="title.ico">
   <link rel="stylesheet" href="style.css">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
 </head>
 
 <body>
 
-  <!DOCTYPE html>
-  <html lang="en">
+  <header>
+    <h1><a href="index.html">SnoSwap</a></h1>
+  </header>
+  <main>
+    <section id="products">
 
-  <head>
-    <meta charset="UTF-8">
-    <title>Example of swipe cards</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+      <div class="item-card" data-item-id="1" data-brand="Brand 1" data-name="Item 1" data-wear="New"
+        data-width="Medium" data-length="170cm" data-bindings="Adjustable">
+        <img src="https://via.placeholder.com/200" alt="Item 1">
+        <h2>Item 1</h2>
+        <p>$10</p>
+      </div>
+      </div>
+      <div class="item-card" data-item-id="2" data-brand="Brand 1" data-name="Item 1" data-wear="New"
+        data-width="Medium" data-length="170cm" data-bindings="Adjustable">
+        <img src="https://via.placeholder.com/200" alt="Item 2">
+        <h2>Item 2</h2>
+        <p>$20</p>
+      </div>
+      <div class="item-card" data-item-id="3" data-brand="Brand 1" data-name="Item 1" data-wear="New"
+        data-width="Medium" data-length="170cm" data-bindings="Adjustable">
+        <img src="https://via.placeholder.com/200" alt="Item 3">
+        <h2>Item 3</h2>
+        <p>$30</p>
+      </div>
+      <div class="item-card" data-item-id="4" data-brand="Brand 1" data-name="Item 1" data-wear="New"
+        data-width="Medium" data-length="170cm" data-bindings="Adjustable">
+        <img src="https://via.placeholder.com/200" alt="Item 3">
+        <h2>Item 4</h2>
+        <p>$40</p>
+      </div>
+      <div class="item-card" data-item-id="5" data-brand="Brand 1" data-name="Item 1" data-wear="New"
+        data-width="Medium" data-length="170cm" data-bindings="Adjustable">
+        <img src="https://via.placeholder.com/200" alt="Item 3">
+        <h2>Item 5</h2>
+        <p>$50</p>
+      </div>
+      <div class="item-card" data-item-id="6" data-brand="Brand 1" data-name="Item 1" data-wear="New"
+        data-width="Medium" data-length="170cm" data-bindings="Adjustable">
+        <img src="https://via.placeholder.com/200" alt="Item 3">
+        <h2>Item 6</h2>
+        <p>$60</p>
+      </div>
+      <div class="item-card" data-item-id="7" data-brand="Brand 1" data-name="Item 1" data-wear="New"
+        data-width="Medium" data-length="170cm" data-bindings="Adjustable">
+        <img src="https://via.placeholder.com/200" alt="Item 3">
+        <h2>Item 7</h2>
+        <p>$70</p>
+      </div>
+      <div class="item-card" data-item-id="8" data-brand="Brand 1" data-name="Item 1" data-wear="New"
+        data-width="Medium" data-length="170cm" data-bindings="Adjustable">
+        <img src="https://via.placeholder.com/200" alt="Item 3">
+        <h2>Item 8</h2>
+        <p>$80</p>
+      </div>
 
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
-
-
-  </head>
-
-  <body>
-
-    <header>
-      <h1><a href="index.html">SnoSwap</a></h1>
-    </header>
-    <main>
-      <section id="products"></section>
-
-      <div class="ski">
-        <div class="ski--status">
-          <i class="fa fa-remove"></i>
-          <i class="fa fa-heart"></i>
-        </div>
-
-        <div id="popup-button" class="ski--cards">
-          <div id="popup-button" class="ski--card">
-            <img id="skiImage" src="skis.jpg">
-          </div>
-          <div id="popup-button" class="ski--card">
-            <img id="skiImage" src="skis.jpg">
-          </div>
-          <div id="popup-button" class="ski--card">
-            <img id="skiImage" src="skis.jpg">
-          </div>
-          <div id="popup-button" class="ski--card">
-            <img id="skiImage" src="skis.jpg">
-          </div>
-          <div id="popup-button" class="ski--card">
-            <img id="skiImage" src="skis.jpg">
-          </div>
-        </div>
-
-        <div class="row pop-up">
-          <div class="box small-6 large-centered">
-            <a href="#" class="close-button">&#10006;</a>
-            <h3>Ski Info</h3>
-            <p>Brand: </p>
-            <p>Price: </p>
-            <p>Wear: </p>
-            <p>width: </p>
-            <p>Length: </p>
-            <a href="#" class="button">Contact Seller</a>
-          </div>
-        </div>
-
-        <div class="ski--buttons">
-          <button id="nope"><i class="fa fa-remove"></i></button>
-          <button id="love"><i class="fa fa-heart"></i></button>
+      <div id="popup">
+        <div class="popup-content">
+          <button id="close-button">X</button>
+          <h2 id="popup-title"></h2>
+          <img id="popup-image" src="" alt="">
+          <p id="popup-price"></p>
+          <p id="popup-brand"></p>
+          <p id="popup-name"></p>
+          <p id="popup-wear"></p>
+          <p id="popup-width"></p>
+          <p id="popup-length"></p>
+          <p id="popup-bindings"></p>
         </div>
       </div>
 
-      </section>
+    </section>
 
-      <section id="banner">
-        <h2>Buy and Sell Local Ski Gear</h2>
-        <p></p>
-        <a href="listing.html" class="btn">List Your Skis<a>
-      </section>
+    <section id="banner">
+      <h2>Buy and Sell Local Ski Gear</h2>
+      <p></p>
+      <a href="listing.html" class="btn">List Your Skis<a>
+    </section>
 
-      <section id="features">
-        <div class="feature">
-          <h3 id="footerText">Free Shipping</h3>
-          <p id="footerText">Get free shipping on all orders over $50.</p>
-        </div>
-        <div class="feature">
-          <h3 id="footerText">Secure Payment</h3>
-          <p id="footerText">Shop with confidence - we use secure payment methods.</p>
-        </div>
-        <div class="feature">
-          <h3 id="footerText">Customer Support</h3>
-          <p id="footerText">Need help? Our customer support team is available 24/7.</p>
-        </div>
-      </section>
+    <section id="features">
+      <div class="feature">
+        <h3 id="footerText">Free Shipping</h3>
+        <p id="footerText">Get free shipping on all orders over $50.</p>
+      </div>
+      <div class="feature">
+        <h3 id="footerText">Secure Payment</h3>
+        <p id="footerText">Shop with confidence - we use secure payment methods.</p>
+      </div>
+      <div class="feature">
+        <h3 id="footerText">Customer Support</h3>
+        <p id="footerText">Need help? Our customer support team is available 24/7.</p>
+      </div>
+    </section>
 
-    </main>
+  </main>
 
-    <footer>
-      <p id="footerText">&copy; 2023 Ski Selling Marketplace. All rights reserved.</p>
-      <a id="footerText" class="text-reset" href="https://github.com/pholyoak/simon.git">Github</a>
-    </footer>
+  <footer>
+    <p id="footerText">&copy; 2023 Ski Selling Marketplace. All rights reserved.</p>
+    <a id="footerText" class="text-reset" href="https://github.com/pholyoak/simon.git">Github</a>
+  </footer>
 
-    <script src='https://hammerjs.github.io/dist/hammer.min.js'></script>
-    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script src="app.js"></script>
-  </body>
+  <script src='https://hammerjs.github.io/dist/hammer.min.js'></script>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src="app.js"></script>
+</body>
 
-  </html>
+</html>
 
 </body>
 
