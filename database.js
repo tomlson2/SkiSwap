@@ -1,15 +1,10 @@
 const { MongoClient } = require('mongodb');
 const bcrypt = require('bcrypt');
 const uuid = require('uuid');
-const EventEmitter = require('events');
-
 const url = 'mongodb+srv://thomas:bryson@cluster.se1vtjc.mongodb.net/bnb';
 const client = new MongoClient(url);
 const userCollection = client.db('bnb').collection('user');
 const postCollection = client.db('bnb').collection('posts');
-
-
-const postEvents = new EventEmitter();
 
 
 function getUser(email) {
@@ -34,7 +29,20 @@ async function createUser(email, password) {
   return user;
 }
 
-async function login(email, password, userCollection) {
+async function incrementReactionCount(id) {
+  const post = await postCollection.findOne({ id });
+
+  if (!post) {
+    throw new Error('Post not found');
+  }
+
+  post.reactionCount += 1;
+  await postCollection.updateOne({ id }, { $set: { reactionCount: post.reactionCount } });
+
+  return post;
+}
+
+async function login(email, password) {
   const user = await userCollection.findOne({ email });
 
   if (!user) {
@@ -47,25 +55,30 @@ async function login(email, password, userCollection) {
     throw new Error('Invalid email or password');
   }
 
-  const token = jwt.sign({ email: user.email }, jwtSecret, { expiresIn: '1h' });
-
   return {
     email: user.email,
-    token,
+    token: user.token,
   };
 }
-async function createPost(email, timestamp, question, icon) {
+
+async function fetchPosts() {
+  const posts = await postCollection.find({}).toArray();
+  return posts;
+}
+
+async function createPost(email, timestamp, question, messageCount, responders, reactionCount, icon) {
   const post = {
     id: uuid.v4(),
     email: email,
+    icon: icon,
     timestamp: timestamp,
     question: question,
-    icon: icon,
+    messageCount: messageCount,
+    responders: responders,
+    reactionCount: reactionCount,
   };
 
   await postCollection.insertOne(post);
-
-  postEvents.emit('newPost', post);
 
   return post;
 }
@@ -76,5 +89,6 @@ module.exports = {
   createUser,
   createPost,
   login,
-  postEvents,
+  fetchPosts,
+  incrementReactionCount,
 };

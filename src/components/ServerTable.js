@@ -1,25 +1,60 @@
 import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
 import ServerRow from './ServerRow';
+import WebSocket from 'isomorphic-ws';
+import Cookies from 'js-cookie';
 
-const ServerTable = ({ headerFilter, timeFilter }) => {
+const ServerTable = ({ token, headerFilter }) => {
   const [data, setData] = useState([]);
-  const [prevData, setPrevData] = useState([]);
   const [inputValue, setInputValue] = useState('');
 
-  const fetchData = () => {
-    let req = '';
+  useEffect(() => {
+    const fetchMessages = async () => {
+      try {
+        const response = await fetch('/api/get-messages', { credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        } }
+        )
+        const messages = await response.json();
+        setData(messages);
+      } catch (error) {
+        console.error('Error fetching messages:', error);
+      }
+    };
 
-    if (timeFilter) {
-      let startDate = new Date();
-      let hoursToSubtract = parseInt(timeFilter);
+    fetchMessages();
+  }, []);
 
-      startDate.setHours(startDate.getHours() - hoursToSubtract);
 
-      req = `?start_date=${startDate.toISOString()}`;
-    }
-    return req;
+  useEffect(() => {
+  const socket = new WebSocket('ws://localhost:3001');
+
+  socket.addEventListener('open', (event) => {
+    console.log('WebSocket connected:', event);
+  });
+
+  socket.addEventListener('message', (event) => {
+    console.log('WebSocket message received:', event);
+
+    const newPost = JSON.parse(event.data);
+    setData((prevData) => [...prevData, newPost]);
+  });
+
+  socket.addEventListener('close', (event) => {
+    console.log('WebSocket closed:', event);
+  });
+
+  socket.addEventListener('error', (event) => {
+    console.log('WebSocket error:', event);
+  });
+
+  return () => {
+    socket.close();
   };
+}, []);
+
 
   const handleSubmit = () => {
     let hex = Math.floor(Math.random()*16777215).toString(16);
@@ -27,9 +62,9 @@ const ServerTable = ({ headerFilter, timeFilter }) => {
       icon: hex,
       question: inputValue,
       timestamp: Date.now(),
-      response_count: 0,
-      respondants: 0,
-      total_reactions: 0,
+      messageCount: 0,
+      responders: 0,
+      reactionCount: 0,
     };
 
     $.ajax({
@@ -50,29 +85,34 @@ const ServerTable = ({ headerFilter, timeFilter }) => {
 
   return (
     <>
-      <input
-        type="text"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        placeholder="Ask a question"
-        style={{ marginRight: '10px' }}
-      />
-      <button
-        onClick={handleSubmit}
-        style={{
-          backgroundColor: 'transparent',
-          border: '1px solid #ccc',
-          borderRadius: '3px',
-          color: '#333',
-          cursor: 'pointer',
-          fontSize: '14px',
-          padding: '5px 10px',
-          outline: 'none',
-          marginRight: '10px',
-        }}
-      >
-        Add Row
-      </button>
+  {token && (
+        <>
+          <input
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            placeholder="Ask a question"
+            style={{ marginRight: '10px' }}
+          />
+          <button
+            onClick={handleSubmit}
+            style={{
+              backgroundColor: 'transparent',
+              border: '1px solid #ccc',
+              borderRadius: '3px',
+              color: '#333',
+              cursor: 'pointer',
+              fontSize: '14px',
+              padding: '5px 10px',
+              outline: 'none',
+              marginRight: '10px',
+              marginTop: '10px',
+            }}
+          >
+            Add Row
+          </button>
+        </>
+      )}
       <table>
         <thead>
           <tr>
@@ -84,20 +124,9 @@ const ServerTable = ({ headerFilter, timeFilter }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item, index) => {
-            const prevItem = prevData[index];
-            let flashClass = '';
-
-            if (prevItem) {
-              if (item.message_count > prevItem.message_count) {
-                flashClass = 'flash-green';
-              } else if (item.message_count < prevItem.message_count) {
-                flashClass = 'flash-red';
-              }
-            }
-
-            return <ServerRow key={index} item={item} flashClass={flashClass} />;
-          })}
+        {[...data].reverse().map((item, index) => {
+  return <ServerRow key={index} item={item} />;
+})}
         </tbody>
       </table>
     </>

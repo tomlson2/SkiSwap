@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
 import './Register.css';
 import axios from 'axios';
+import SmallHeader from './SmallHeader';
 
 const Register = () => {
-    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
   
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        const response = await axios.post('/api/users', { name, email, password });
+        const response = await axios.post('/api/users', { email, password });
         console.log(response.data);
       } catch (error) {
         console.error('Registration failed:', error.response.data.error);
       }
     };
     return (
-        <div className="register">
+      <div>
+          <SmallHeader />
+        <div className="reg">
           <form onSubmit={handleSubmit} className="register-form">
             <input
               type="email"
@@ -36,6 +38,7 @@ const Register = () => {
             <button type="submit" className="register-submit">Register</button>
           </form>
         </div>
+      </div>
       );
 };
 

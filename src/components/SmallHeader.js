@@ -9,7 +9,7 @@ const SmallHeader = () => {
       <Logo className="logo" />
       <h1 className="title">
         <a href="/" className="link">
-          CW
+          Snow Chat
         </a>
       </h1>
       <div className="auth-buttons-container">

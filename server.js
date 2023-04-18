@@ -2,16 +2,12 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
 const DB = require('./database');
-const authenticateJWT = require('./auth')
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
 const http = require('http');
 const WebSocket = require('ws');
-const EventEmitter = require('events');
-const postevents = require('./database')
 
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
+const authCookieName = 'authToken';
 
 wss.on('connection', (ws) => {
   console.log('Client connected');
@@ -25,60 +21,87 @@ wss.on('connection', (ws) => {
   });
 });
 
-
 app.use(express.json());
 
 app.use(cookieParser());
 
 app.post('/api/users', async (req, res) => {
 
-    if (await DB.getUser(req.body.email)) {
-      res.status(409).send({ msg: 'Existing user' });
-    } else {
-      const user = await DB.createUser(req.body.email, req.body.password);
-  
-      setAuthCookie(res, user.token);
-  
-      res.send({
-        id: user._id,
-      });
-    }
-  });
+  if (await DB.getUser(req.body.email)) {
+    res.status(409).send({ msg: 'Existing user' });
+  } else {
+    const user = await DB.createUser(req.body.email, req.body.password);
 
-  app.post('/api/post', async (req, res) => {
-    try {
-      const email = req.email;
-      const post = await DB.createPost(email, req.body.timestamp, req.body.id, req.body.question, req.icon);
-      res.json(post);
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'An error occurred while creating the post' });
-    }
-  });
-  
-  postEvents.on('newPost', (post) => {
-    // Emit the new post to all connected clients
+    const loggedInUser = await DB.login(req.body.email, req.body.password);
+
+    setAuthCookie(res, loggedInUser.token);
+
+    res.send({
+      id: user._id,
+    });
+  }
+});
+
+app.put('/api/question/:id/like', async (req, res) => {
+  try {
+    const postId = req.params.id;
+    const updatedPost = await DB.incrementReactionCount(postId);
+    res.json(updatedPost);
+  } catch (error) {
+    console.error('Error updating reaction count:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.get('/api/get-messages', async (req, res) => {
+  try {
+    const posts = await DB.fetchPosts();
+    res.json(posts);
+  } catch (error) {
+    console.error('Error fetching posts:', error);
+    res.status(500).json({ error: 'An error occurred while fetching posts.' });
+  }
+});
+
+app.post('/api/post', async (req, res) => {
+  try {
+    const email = req.email;
+    const post = await DB.createPost(email, req.body.timestamp, req.body.question, req.body.messageCount, req.body.responders, req.body.reactionCount, req.body.icon);
+    res.json(post);
     wss.clients.forEach((client) => {
       if (client.readyState === WebSocket.OPEN) {
+        console.log(JSON.stringify(post));
         client.send(JSON.stringify(post));
       }
     });
-  });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'An error occurred while creating the post' });
+  }
+});
 
-  app.post('/api/login', async (req, res) => {
-    const { email, password } = req.body;
-  
-    try {
-      const loggedInUser = await login(email, password, userCollection);
-  
-      res.cookie('authCookie', loggedInUser.token, { httpOnly: true });
-      res.json({ success: true });
-    } catch (err) {
-      console.error(err);
-      res.status(401).json({ error: 'Invalid email or password' });
-    }
-  });
+app.post('/api/login', async (req, res) => {
+  const { email, password } = req.body;
 
-  server.listen(3001, () => {
-    console.log(`Server is running on port ${port}`);
+  try {
+    const loggedInUser = await login(email, password, userCollection);
+
+    setAuthCookie(res, loggedInUser.token);
+    res.json({ success: true });
+  } catch (err) {
+    console.error(err);
+    res.status(401).json({ error: 'Invalid email or password' });
+  }
+});
+
+function setAuthCookie(res, authToken) {
+  res.cookie(authCookieName, authToken, {
+    path: '/',
+    secure: false,
+    httpOnly: false,
   });
+}
+
+server.listen(3001, () => {
+  console.log(`Server is running on port 3001`);
+});

@@ -2,21 +2,20 @@ import { React, useState } from 'react';
 import SmallHeader from './SmallHeader';
 import HeaderContainer from './HeaderContainer';
 import ServerTable from './ServerTable';
-import TotalMessageCount from './TotalMessageCount';
+import Cookies from 'js-cookie';
 
 const Home = () => {
-    const [headerFilter, setHeaderFilter] = useState("top");
-    const [timeFilter, setTimeFilter] = useState(24);
+
+    const token = Cookies.get('authToken');
+    const [headerFilter, setHeaderFilter] = useState("all");
     return (
         <div>
             <SmallHeader />
             <HeaderContainer
                 onHeaderFilterClick={setHeaderFilter}
                 activeHeaderFilter={headerFilter}
-                onTimeFilterClick={setTimeFilter}
-                activeTimeFilter={timeFilter}
             />
-            <ServerTable headerFilter={headerFilter} timeFilter={timeFilter} />
+            <ServerTable token={token} />
         </div>
     );
 };
