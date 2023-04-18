@@ -1,0 +1,111 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px
+}
+
+header {
+    flex: 0 80px;
+    background-color: #036;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+h1 a {
+    color: white !important;
+    text-decoration: none !important;
+    font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+    font-weight: bold;
+}
+
+main {
+    flex: 1 calc(100vh - 110px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around
+}
+
+footer {
+    flex: 0 30px
+}
+
+menu {
+    flex: 1;
+    display: flex;
+    flex-direction: row !important;
+    list-style: none
+}
+
+.navbar-brand {
+    padding-left: .3em;
+    border-bottom: solid #b6b6b6 thin
+}
+
+menu .nav-item {
+    padding: 0 .3em
+}
+
+footer {
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+#footerText {
+    color: #000;
+}
+
+.button-container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px
+}
+
+.center {
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%)
+}
+
+@media (max-height:500px) {
+    header {
+        display: none
+    }
+
+    footer {
+        display: none
+    }
+
+    main {
+        flex: 1 100vh
+    }
+}
+
+p {
+    color: black;
+}
+
+#welcome {
+    color: black;
+    margin-bottom: 20px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-container input,
+.form-container button {
+    margin: 10px 0;
+}
