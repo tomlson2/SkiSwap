@@ -37,3 +37,7 @@ itemCards.forEach((itemCard) => {
         popup.style.display = 'flex';
     });
 });
+
+closeButton.addEventListener('click', () => {
+    popup.style.display = 'none';
+});
