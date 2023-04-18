@@ -24,6 +24,7 @@ app.post('/api/users', async (req, res) => {
       }
   });
 
+
 app.post('/api/login', (req, res) => {
     const { email, password } = req.body;
     User.findOne({ email }, (err, user) => {
