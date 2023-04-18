@@ -1,41 +1,64 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Dropdown.css';
+import axios from 'axios';
 
-const Dropdown = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const Dropdown = ({ postId }) => {
   const [comment, setComment] = useState('');
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    const fetchComments = async () => {
+      try {
+        const response = await axios.get(`/api/${postId}/comments`);
+        setComments(response.data);
+      } catch (error) {
+        console.error('Error fetching comments:', error);
+      }
+    };
+
+    fetchComments();
+  }, [postId]);
 
   const handleInputChange = (event) => {
     setComment(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Handle adding the comment to the server/database
-    console.log(comment);
-    setComment('');
+
+    try {
+      const response = await axios.post(`/api/${postId}/comment`, {
+        content: comment,
+      });
+      setComments((prevComments) => [...prevComments, response.data]);
+      setComment('');
+    } catch (error) {
+      console.error('Error creating comment:', error);
+    }
   };
 
   return (
-        <div className="dropdown-content">
-          <div className="comment-list">
-            <div className="comment-item">Comment 1</div>
-            <div className="comment-item">Comment 2</div>
-            <div className="comment-item">Comment 3</div>
+    <div className="dropdown">
+      <div className="comment-list">
+        {comments.map((comment) => (
+          <div key={comment.id} className="comment-item">
+            {comment.content}
           </div>
-          <form onSubmit={handleSubmit} className="comment-form">
-            <textarea
-              className="comment-input"
-              value={comment}
-              onChange={handleInputChange}
-              placeholder="Add a comment"
-            />
-            <button type="submit" className="comment-submit">
-              Send
-            </button>
-          </form>
-        </div>
-      )
+        ))}
+      </div>
+      <form onSubmit={handleSubmit} className="comment-form">
+        <textarea
+          className="comment-input"
+          value={comment}
+          onChange={handleInputChange}
+          placeholder="Add a comment"
+        />
+        <button type="submit" className="comment-submit">
+          Send
+        </button>
+      </form>
+    </div>
+  );
 };
 
 export default Dropdown;

@@ -5,6 +5,7 @@ const url = 'mongodb+srv://thomas:bryson@cluster.se1vtjc.mongodb.net/bnb';
 const client = new MongoClient(url);
 const userCollection = client.db('bnb').collection('user');
 const postCollection = client.db('bnb').collection('posts');
+const commentCollection = client.db('bnb').collection('comments');
 
 
 function getUser(email) {
@@ -61,9 +62,28 @@ async function login(email, password) {
   };
 }
 
+async function fetchComments(postid) {
+  const comments = await commentCollection.find({ postid }).toArray();
+  return comments;
+}
+
 async function fetchPosts() {
   const posts = await postCollection.find({}).toArray();
   return posts;
+}
+
+async function createComment(email, postid, timestamp, content) {
+  const comment = {
+    id: uuid.v4(), 
+    postid: postid,
+    email: email,
+    timestamp: timestamp,
+    content: content,
+  };
+
+  await commentCollection.insertOne(comment);
+
+  return comment;
 }
 
 async function createPost(email, timestamp, question, messageCount, responders, reactionCount, icon) {
@@ -91,4 +111,6 @@ module.exports = {
   login,
   fetchPosts,
   incrementReactionCount,
+  fetchComments,
+  createComment
 };

@@ -4,6 +4,7 @@
     margin-left: 15px;
   }
 
+
   body {
     margin-left: 17%;
     margin-right: 17%;
@@ -177,6 +178,7 @@ r
 
   .title {
     vertical-align: middle;
+    align-self: center;
   }
 
   .header-container h2.active,
@@ -330,4 +332,26 @@ r
 
   table tbody tr:last-of-type {
     border-bottom: 2px solid #dddddd;
+  }
+  header {
+    display: flex;
+    align-items: center;
+  }
+  h1 {
+    margin: 0;
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .auth-buttons-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .auth-button {
+    margin-left: 16px;
   }

@@ -10,7 +10,7 @@ const Home = () => {
     const [headerFilter, setHeaderFilter] = useState("all");
     return (
         <div>
-            <SmallHeader />
+            <SmallHeader token={token}/>
             <HeaderContainer
                 onHeaderFilterClick={setHeaderFilter}
                 activeHeaderFilter={headerFilter}

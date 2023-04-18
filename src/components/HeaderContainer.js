@@ -5,7 +5,6 @@ const HeaderContainer = ({ onHeaderFilterClick, activeHeaderFilter }) => {
         <div className="header-container">
             <div className="left-group">
                 <h2 onClick={() => onHeaderFilterClick("all")} className={activeHeaderFilter === "all" ? "active-filter" : ""}>all</h2>
-                <h2 onClick={() => onHeaderFilterClick("starred")} className={activeHeaderFilter === "starred" ? "active-filter" : ""}>starred</h2>
             </div>
         </div>
     );

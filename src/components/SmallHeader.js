@@ -3,23 +3,26 @@ import './SmallHeader.css';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../assets/logo.svg'
 
-const SmallHeader = () => {
+const SmallHeader = ({token}) => {
   return (
-    <header className="small-icon-text-container">
+    <header >
       <Logo className="logo" />
-      <h1 className="title">
+      <h1>
         <a href="/" className="link">
           Snow Chat
         </a>
       </h1>
-      <div className="auth-buttons-container">
+      {!token && <div className="auth-buttons-container">
         <Link to="/login" className="auth-button login">
           Login
         </Link>
         <Link to="/register" className="auth-button register">
           Register
         </Link>
-      </div>
+      </div>}
+      {token && <div className='auth-buttons-container'>
+        Logged in 
+        </div>}
     </header>
   );
 };

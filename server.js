@@ -63,6 +63,28 @@ app.get('/api/get-messages', async (req, res) => {
   }
 });
 
+app.post('/api/:id/comment', async (req, res) => {
+  const id = req.params.id;
+  try {
+    const comment = await DB.createComment(req.body.email, id, req.body.timestamp, req.body.content);
+    res.json(comment);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'An error occurred while creating the comment' });
+  }
+})
+
+app.get('/api/:id/comments', async (req, res) => {
+  const id = req.params.id;
+  try {
+    const comments = await DB.fetchComments(id);
+    res.json(comments);
+  } catch (error) {
+    console.error('Error fetching comments:', error);
+    res.status(500).json({ error: 'An error occurred while fetching comments.' });
+  }
+});
+
 app.post('/api/post', async (req, res) => {
   try {
     const email = req.email;

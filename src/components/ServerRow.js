@@ -35,7 +35,7 @@ const ServerRow = ({ item }) => {
           <span className="server-text">{serverName}</span>
           {isDropdownOpen && (
             <div className="dropdown">
-            <Dropdown />
+              <Dropdown postId={item._id} />
             </div>
           )}
       </td>

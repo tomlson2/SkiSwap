@@ -92,24 +92,22 @@ const ServerTable = ({ token, headerFilter }) => {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             placeholder="Ask a question"
-            style={{ marginRight: '10px' }}
+            style={{ width: '200px', marginRight: '10px' }}
           />
           <button
             onClick={handleSubmit}
             style={{
-              backgroundColor: 'transparent',
               border: '1px solid #ccc',
               borderRadius: '3px',
               color: '#333',
               cursor: 'pointer',
               fontSize: '14px',
-              padding: '5px 10px',
               outline: 'none',
               marginRight: '10px',
               marginTop: '10px',
             }}
           >
-            Add Row
+            Start Discussion
           </button>
         </>
       )}
