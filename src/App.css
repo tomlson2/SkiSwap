@@ -173,7 +173,6 @@ r
 
   .icon {
     margin-right: 18px;
-    /* Adjust the spacing between the icon and the text as needed */
   }
 
   .title {
@@ -259,11 +258,8 @@ r
 
   .details-logo {
     width: 50px;
-    /* Adjust the width as needed */
     height: 50px;
-    /* Adjust the height as needed */
     margin-right: 18px;
-    /* Adjust the spacing between the icon and the text as needed */
     vertical-align: middle;
     border-radius: 9%;
   }
@@ -310,11 +306,8 @@ r
 
   .server-icon {
     width: 35px;
-    /* Adjust the width as needed */
     height: 35px;
-    /* Adjust the height as needed */
     margin-right: 18px;
-    /* Adjust the spacing between the icon and the text as needed */
     vertical-align: middle;
     border-radius: 50%;
   }
