@@ -123,6 +123,9 @@ function setAuthCookie(res, authToken) {
   });
 }
 
+//Built in middleware - Static file hosting
+app.use(express.static('public'));
+
 server.listen(4000, () => {
   console.log(`Server is running on port 4000`);
 });
