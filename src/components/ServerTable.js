@@ -11,11 +11,13 @@ const ServerTable = ({ token, headerFilter }) => {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const response = await fetch('/api/get-messages', { credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true,
-        } }
+        const response = await fetch('/api/get-messages', {
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Credentials": true,
+          }
+        }
         )
         const messages = await response.json();
         setData(messages);
@@ -29,35 +31,35 @@ const ServerTable = ({ token, headerFilter }) => {
 
 
   useEffect(() => {
-  const socket = new WebSocket('ws://localhost:4001');
+    const socket = new WebSocket('ws://localhost:4000');
 
-  socket.addEventListener('open', (event) => {
-    console.log('WebSocket connected:', event);
-  });
+    socket.addEventListener('open', (event) => {
+      console.log('WebSocket connected:', event);
+    });
 
-  socket.addEventListener('message', (event) => {
-    console.log('WebSocket message received:', event);
+    socket.addEventListener('message', (event) => {
+      console.log('WebSocket message received:', event);
 
-    const newPost = JSON.parse(event.data);
-    setData((prevData) => [...prevData, newPost]);
-  });
+      const newPost = JSON.parse(event.data);
+      setData((prevData) => [...prevData, newPost]);
+    });
 
-  socket.addEventListener('close', (event) => {
-    console.log('WebSocket closed:', event);
-  });
+    socket.addEventListener('close', (event) => {
+      console.log('WebSocket closed:', event);
+    });
 
-  socket.addEventListener('error', (event) => {
-    console.log('WebSocket error:', event);
-  });
+    socket.addEventListener('error', (event) => {
+      console.log('WebSocket error:', event);
+    });
 
-  return () => {
-    socket.close();
-  };
-}, []);
+    return () => {
+      socket.close();
+    };
+  }, []);
 
 
   const handleSubmit = () => {
-    let hex = Math.floor(Math.random()*16777215).toString(16);
+    let hex = Math.floor(Math.random() * 16777215).toString(16);
     const newItem = {
       icon: hex,
       question: inputValue,
@@ -85,7 +87,7 @@ const ServerTable = ({ token, headerFilter }) => {
 
   return (
     <>
-  {token && (
+      {token && (
         <>
           <input
             type="text"
@@ -120,9 +122,9 @@ const ServerTable = ({ token, headerFilter }) => {
           </tr>
         </thead>
         <tbody>
-        {[...data].reverse().map((item, index) => {
-  return <ServerRow key={index} item={item} />;
-})}
+          {[...data].reverse().map((item, index) => {
+            return <ServerRow key={index} item={item} />;
+          })}
         </tbody>
       </table>
     </>
