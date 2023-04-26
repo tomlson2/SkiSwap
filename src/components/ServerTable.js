@@ -31,7 +31,7 @@ const ServerTable = ({ token, headerFilter }) => {
 
 
   useEffect(() => {
-    const socket = new WebSocket('ws://localhost:4000');
+    const socket = new WebSocket('wss://localhost:4000');
 
     socket.addEventListener('open', (event) => {
       console.log('WebSocket connected:', event);
